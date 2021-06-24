@@ -1,0 +1,84 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+
+  <section class="text-center" class="section"> 
+      <div class="container">
+        <div class="row no-gutters">
+          <div class="col-lg-7 px-5 pt-5" >
+            <img src="../assets/img1.jpg" class="img-fluid center" alt="">
+      <form
+        *ngIf="!isLoggedIn"
+        name="form"
+        (ngSubmit)="f.form.valid && onSubmit()"
+        #f="ngForm"
+        novalidate
+      >
+        <div class="form-row">
+            <div class="col-lg-7 center">
+          <input
+          class="form-control my-3 p-4"
+            type="text"
+            placeholder="username"
+            name="username"
+            [(ngModel)]="form.username"
+            required
+            #username="ngModel"
+          />
+          <div
+          class="alert alert-danger"
+          role="alert"
+          *ngIf="f.submitted && username.invalid"
+        >
+          Username is required!
+        </div>
+      </div>
+      </div>
+      <div class="form-row" >
+      
+          <div class="col-lg-7 center">
+        <input
+          type="password"
+          class="form-control my-3 p-4"
+          placeholder="password"
+          name="password"
+          [(ngModel)]="form.password"
+          required
+          minlength="6"
+          #password="ngModel"
+        />
+        <div
+          class="alert alert-danger"
+          role="alert"
+          *ngIf="f.submitted && password.invalid"
+        >
+        <div *ngIf="password.errors.required">Password is required</div>
+          <div *ngIf="password.errors.minlength">
+            Password must be at least 6 characters
+          </div>
+        </div>
+      </div>
+      </div>
+      <div class="form-row">
+        <div class="col-lg-7 center">
+        <button class="btn1 " routerLink="user">
+          Login
+        </button>
+      </div>
+      </div>
+      <div class="form-group">
+        <div
+          class="alert alert-danger center"
+          role="alert"
+          *ngIf="f.submitted && isLoginFailed"
+        >
+          Login failed: {{ errorMessage }}
+        </div>
+      </div>
+    </form>
+    <div class="alert alert-success center" *ngIf="isLoggedIn">
+        Logged in as {{ roles }}.
+      </div>
+    </div>
+    </div>
+  </div>
+</section>
