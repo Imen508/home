@@ -10,14 +10,19 @@ import { RegisterComponent } from './register/register.component';
 import { HomeComponent } from './home/home.component';
 import { ProfileComponent } from './profile/profile.component';
 import { BoardAdminComponent } from './board-admin/board-admin.component';
-
+import {OrdersComponent} from './orders/orders.component';
+import {ProductsComponent} from './products/products.component';
+import{ProductDetailComponent} from'./product-detail/product-detail.component';
+import{PricingComponent} from'./pricing/pricing.component';
+import {LocationsComponent} from './locations/locations.component';
 import { BoardUserComponent } from './board-user/board-user.component';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
+import { DashbordComponent} from './dashbord/dashbord.component'
 import { authInterceptorProviders } from './_helpers/auth.interceptor';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { SidebarComponent } from './sidebar/sidebar.component';
+import { sidebarLoginComponent } from './sidebarLogin/sidebarLogin.component';
 import { NavbarComponent } from './shared/navbar/navbar.component';
 @NgModule({
   declarations: [
@@ -27,7 +32,13 @@ import { NavbarComponent } from './shared/navbar/navbar.component';
     HomeComponent,
     ProfileComponent,
     BoardAdminComponent,
-    
+    sidebarLoginComponent,
+    OrdersComponent,
+    PricingComponent,
+    DashbordComponent,
+    ProductDetailComponent,
+    LocationsComponent,
+    ProductsComponent,
     BoardUserComponent,
          SidebarComponent,
          NavbarComponent 

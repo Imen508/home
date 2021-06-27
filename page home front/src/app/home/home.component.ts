@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../_services/user.service';
+import { TokenStorageService } from '../_services/token-storage.service';
 
 
 
@@ -9,11 +10,17 @@ import { UserService } from '../_services/user.service';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
+
  export class HomeComponent implements OnInit {
    
+  private roles: string[];
+  isLoggedIn = false;
+  showAdminBoard = false;
+ 
+  username: string;
    content: string;
 
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService, private tokenStorageService: TokenStorageService) { }
 
   ngOnInit(): void {
     this.userService.getPublicContent().subscribe(
@@ -24,6 +31,15 @@ import { UserService } from '../_services/user.service';
         this.content = JSON.parse(err.error).message;
       }
     );
+    if (this.isLoggedIn) {
+      const user = this.tokenStorageService.getUser();
+      this.roles = user.roles;
+
+      //this.showAdminBoard = this.roles.includes('ROLE_ADMIN');
+      
+
+      this.username = user.username;
+    }
   }
   customOptions: any = {
     loop: true,

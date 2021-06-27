@@ -3,6 +3,7 @@ import { Component, OnInit, Renderer2, ViewChild, ElementRef } from '@angular/co
 import { ROUTES } from '../../sidebar/sidebar.component';
 import { Router } from '@angular/router';
 import { Location} from '@angular/common';
+import { TokenStorageService } from '../../_services/token-storage.service';
 
 
 @Component({
@@ -16,18 +17,23 @@ export class NavbarComponent implements OnInit{
     location: Location;
     private nativeElement: Node;
     private toggleButton;
+    isLoggedIn = false;
     private sidebarVisible: boolean;
 
     public isCollapsed = true;
     @ViewChild("navbar-cmp", {static: false}) button;
 
-    constructor(location:Location, private renderer : Renderer2, private element : ElementRef, private router: Router) {
+    constructor(private tokenStorageService: TokenStorageService,location:Location, private renderer : Renderer2, private element : ElementRef, private router: Router) {
         this.location = location;
         this.nativeElement = element.nativeElement;
         this.sidebarVisible = false;
     }
 
     ngOnInit(){
+      this.isLoggedIn = !!this.tokenStorageService.getToken();
+      if (this.isLoggedIn) {
+        const user = this.tokenStorageService.getUser();
+      }
         this.listTitles = ROUTES.filter(listTitle => listTitle);
         var navbar : HTMLElement = this.element.nativeElement;
         this.toggleButton = navbar.getElementsByClassName('navbar-toggle')[0];
@@ -92,6 +98,10 @@ export class NavbarComponent implements OnInit{
           navbar.classList.remove('bg-white');
         }
 
+      }
+      logout(): void {
+        this.tokenStorageService.signOut();
+        window.location.reload();
       }
 
 }
