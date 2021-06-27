@@ -22,6 +22,12 @@ export class LoginComponent implements OnInit {
     if (this.tokenStorage.getToken()) {
       this.isLoggedIn = true;
       this.roles = this.tokenStorage.getUser().roles;
+      if (this.roles[0] == "ROLE_ADMIN"){
+        this.router.navigate(['/dashbord']);
+      }
+      else{
+        this.router.navigate(['/vendeur']);
+      }
     }
   }
 
