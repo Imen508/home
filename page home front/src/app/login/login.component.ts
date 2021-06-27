@@ -30,10 +30,16 @@ export class LoginComponent implements OnInit {
       data => {
         this.tokenStorage.saveToken(data.accessToken);
         this.tokenStorage.saveUser(data);
-        this.router.navigate(['/dashbord']);
         this.isLoginFailed = false;
         this.isLoggedIn = true;
         this.roles = this.tokenStorage.getUser().roles;
+        console.log(this.roles);
+        if (this.roles[0] == "ROLE_ADMIN"){
+          this.router.navigate(['/dashbord']);
+        }
+        else{
+          this.router.navigate(['/vendeur']);
+        }
       },
       err => {
         this.errorMessage = err.error.message;

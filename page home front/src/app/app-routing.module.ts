@@ -9,10 +9,8 @@ import {ProductsComponent} from './products/products.component';
 import{ProductDetailComponent} from'./product-detail/product-detail.component';
 import{PricingComponent} from'./pricing/pricing.component';
 import {LocationsComponent} from './locations/locations.component';
-import { ProfileComponent } from './profile/profile.component';
 import { BoardUserComponent } from './board-user/board-user.component';
 import { DashbordComponent } from './dashbord/dashbord.component';
-import { BoardAdminComponent } from './board-admin/board-admin.component';
 import { from } from 'rxjs';
 
 const routes: Routes = [
@@ -20,10 +18,8 @@ const routes: Routes = [
   { path: 'home/login/home', component: HomeComponent },
   { path: 'home/login', component: LoginComponent },
   { path: 'home/register', component: RegisterComponent },
-  { path: 'profile', component: ProfileComponent },
-  { path: 'user', component: BoardUserComponent },
+  { path: 'vendeur', component: BoardUserComponent },
   { path: 'dashbord', component: DashbordComponent },
-  { path: 'admin', component: BoardAdminComponent },
   { path: 'orders', component: OrdersComponent },
   { path: 'products', component: ProductsComponent },
   { path: 'product-detail/:id', component: ProductDetailComponent }, 
