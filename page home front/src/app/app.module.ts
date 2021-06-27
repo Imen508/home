@@ -21,6 +21,7 @@ import { authInterceptorProviders } from './_helpers/auth.interceptor';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { sidebarLoginComponent } from './sidebarLogin/sidebarLogin.component';
+import { sidebarVendeurComponent } from './sidebarVendeur/sidebarVendeur.component';
 import { NavbarComponent } from './shared/navbar/navbar.component';
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { NavbarComponent } from './shared/navbar/navbar.component';
     RegisterComponent,
     HomeComponent,
     sidebarLoginComponent,
+    sidebarVendeurComponent,
     OrdersComponent,
     PricingComponent,
     DashbordComponent,
